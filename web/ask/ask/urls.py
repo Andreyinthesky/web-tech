@@ -16,12 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+app_urls = 'qa.urls'
+
 urlpatterns = [
-    url(r'^$', 'test'),
-    url(r'^login/.*$', 'test', name='login'),
-    url(r'^signup/.*', 'test', name='signup'),
-    url(r'^question/(?P<id>[0-9]+)/$', 'test', name='question'),
-    url(r'^ask/.*', 'test', name='ask'),
-    url(r'^popular/.*', 'test', name='popular'),
-    url(r'^new/.*', 'test', name='new'),
+    url(r'^$', include(app_urls)),
+    url(r'^login/.*$', include(app_urls), name='login'),
+    url(r'^signup/.*', include(app_urls), name='signup'),
+    url(r'^question/(?P<id>[0-9]+)/$', include(app_urls), name='question'),
+    url(r'^ask/.*', include(app_urls), name='ask'),
+    url(r'^popular/.*', include(app_urls), name='popular'),
+    url(r'^new/.*', include(app_urls), name='new'),
 ]
