@@ -1,4 +1,4 @@
-from qa.views import test
+from views import test
 
 urlpatterns = [
     url(r'^$', test)
