@@ -1,5 +1,5 @@
+#coding: utf-8
 from __future__ import unicode_literals
-
 from django.db import models
 
 # Create your models here.
@@ -20,7 +20,7 @@ class Question(models.Model):
         return "/question/{}/".format(self.id)
 
     
-class QuestionManager(models.Quesion):
+class QuestionManager(models.Manager):
     def new(self):
         return self.order_by('-added_at')
     
