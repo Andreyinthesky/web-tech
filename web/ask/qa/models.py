@@ -18,6 +18,15 @@ class Question(models.Model):
 
     def get_url(self):
         return "/question/{}/".format(self.id)
+
+    
+class QuestionManager(models.Quesion):
+    def new(self):
+        return self.order_by('-added_at')
+    
+    def popular(self):
+        return self.order_by('-rating')
+    
     
 class Answer(models.Model):
     text =  models.TextField(default="") #текст ответа
