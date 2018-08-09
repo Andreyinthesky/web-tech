@@ -77,9 +77,12 @@ WSGI_APPLICATION = 'ask.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.path.join(BASE_DIR, 'db.mysql'),
+        'NAME': 'djbase',
+        'USER': 'django',
+        'PASSWORD': 'pass123',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
-}
 
 
 # Password validation
