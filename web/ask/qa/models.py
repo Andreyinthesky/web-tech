@@ -5,7 +5,16 @@ from django.db import models
 # Create your models here.
 from django.contrib.auth.models import User
 
+
+class QuestionManager(models.Manager):
+    def new(self):
+        return self.order_by('-added_at')
+    
+    def popular(self):
+        return self.order_by('-rating')
+    
 class Question(models.Model):
+    objects = QuestionManager()
     title = models.CharField(default="", max_length=1024) #заголовок вопроса
     text = models.TextField(default="") #полный текст вопроса
     added_at = models.DateTimeField(blank=True, auto_now_add=True) #дата добавления вопроса
@@ -20,13 +29,7 @@ class Question(models.Model):
         return "/question/{}/".format(self.id)
 
     
-class QuestionManager(models.Manager):
-    def new(self):
-        return self.order_by('-added_at')
-    
-    def popular(self):
-        return self.order_by('-rating')
-    
+
     
 class Answer(models.Model):
     text =  models.TextField(default="") #текст ответа
